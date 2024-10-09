@@ -6,7 +6,7 @@ public class Supply {
     private long id;
     private long idUser;
     private long idItem;
-    private long quantity;
+    private int quantity;
     private String date;
 
     public Supply(SupplyBuilder builder) {
@@ -36,7 +36,7 @@ public class Supply {
         return idItem;
     }
 
-    public long getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
@@ -56,7 +56,7 @@ public class Supply {
         this.idItem = idItem;
     }
 
-    public void setQuantity(long quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 

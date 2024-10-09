@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class SupplyRequest {
     private long id;
     private long itemId;
-    private long quantity;
+    private int quantity;
 }

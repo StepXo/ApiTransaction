@@ -7,8 +7,7 @@ import com.emazon.ApiTransaction.Domain.Spi.StockFeignPort;
 import com.emazon.ApiTransaction.Domain.Spi.SupplyRepositoryPort;
 import com.emazon.ApiTransaction.Domain.Spi.UserJwtPort;
 import com.emazon.ApiTransaction.Domain.Usecase.SupplyUseCase;
-import com.emazon.ApiTransaction.Infrastructure.Adapters.Feign.StockFeign;
-import com.emazon.ApiTransaction.Infrastructure.Adapters.Feign.IUserFeign;
+import com.emazon.ApiTransaction.Infrastructure.Adapters.Feign.IStockFeign;
 import com.emazon.ApiTransaction.Infrastructure.Adapters.Utils.UserExtractor;
 import com.emazon.ApiTransaction.Infrastructure.Adapters.Jpa.SupplyJpa;
 import com.emazon.ApiTransaction.Infrastructure.Adapters.Mapper.SupplyMapper;
@@ -25,7 +24,7 @@ public class BeanCondiguration {
     private final SupplyRepository supplyRepository;
     private final SupplyHandler supplyHandler;
     private final JwtService jwtService;
-    private final StockFeign stockFeign;
+    private final IStockFeign IStockFeign;
 
 
     @Bean
@@ -39,7 +38,7 @@ public class BeanCondiguration {
     }
     @Bean
     public StockFeignPort stockFeignPort(){
-        return stockFeign;
+        return IStockFeign;
     }
 
 

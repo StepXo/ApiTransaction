@@ -24,7 +24,6 @@ public class SupplyUseCase implements SupplyServicePort {
     @Override
     public Supply saveSupply(Supply supply) {
         String userIdString = userJwt.extractUserId();
-
         Validation.validate(supply,userIdString);
 
         supply.setDate(LocalDate.now().toString());

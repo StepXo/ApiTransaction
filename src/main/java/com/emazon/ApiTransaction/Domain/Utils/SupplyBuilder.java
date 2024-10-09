@@ -6,7 +6,7 @@ public class SupplyBuilder {
     public long id;
     public long idUser;
     public long idItem;
-    public long quantity;
+    public int quantity;
     public String date;
 
     public SupplyBuilder setId(long id) {
@@ -24,7 +24,7 @@ public class SupplyBuilder {
         return this;
     }
 
-    public SupplyBuilder setQuantity(long quantity) {
+    public SupplyBuilder setQuantity(int quantity) {
         this.quantity = quantity;
         return this;
     }
