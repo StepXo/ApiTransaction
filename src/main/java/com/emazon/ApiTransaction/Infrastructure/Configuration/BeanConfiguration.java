@@ -19,12 +19,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @RequiredArgsConstructor
-public class BeanCondiguration {
+public class BeanConfiguration {
     private final SupplyMapper mapper;
     private final SupplyRepository supplyRepository;
     private final SupplyHandler supplyHandler;
     private final JwtService jwtService;
-    private final IStockFeign IStockFeign;
+    private final IStockFeign iStockFeign;
 
 
     @Bean
@@ -38,7 +38,7 @@ public class BeanCondiguration {
     }
     @Bean
     public StockFeignPort stockFeignPort(){
-        return IStockFeign;
+        return iStockFeign;
     }
 
 
