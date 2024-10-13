@@ -15,4 +15,9 @@ public class SupplyJpa implements SupplyRepositoryPort {
     public Supply saveSupply(Supply supply) {
         return mapper.toSupply(repository.save(mapper.toSupplyEntity(supply)));
     }
+
+    @Override
+    public Supply getItem(long id) {
+        return mapper.toSupply(repository.findById(id).orElse(null));
+    }
 }

@@ -8,6 +8,7 @@ import com.emazon.ApiTransaction.Domain.Spi.UserJwtPort;
 import com.emazon.ApiTransaction.Domain.Utils.Validation;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class SupplyUseCase implements SupplyServicePort {
 
@@ -33,4 +34,24 @@ public class SupplyUseCase implements SupplyServicePort {
 
         return supplyRepositoryPort.saveSupply(supply);
     }
+
+    @Override
+    public String checkDate(long id) {
+        Supply item = supplyRepositoryPort.getItem(id);
+        if (item == null) {
+            return "Item has never Supplied";
+        }
+        return "Last time item" + item.getIdItem() + " has been Supplied on " + item.getDate();
+    }
+
+    @Override
+    public String checkDate(List<Long> id) {
+        StringBuilder sb = new StringBuilder();
+        for (long itemId : id) {
+            sb.append(checkDate(itemId)).append("\n");
+        }
+        return sb.toString();
+
+    }
+
 }
