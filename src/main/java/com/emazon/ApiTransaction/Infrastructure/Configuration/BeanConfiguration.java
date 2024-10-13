@@ -17,6 +17,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.sound.midi.Track;
+
 @Configuration
 @RequiredArgsConstructor
 public class BeanConfiguration {
@@ -40,7 +42,6 @@ public class BeanConfiguration {
     public StockFeignPort stockFeignPort(){
         return iStockFeign;
     }
-
 
     @Bean
     public SupplyServicePort supplyServicePort(){

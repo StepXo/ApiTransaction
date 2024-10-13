@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/transaction")
 @RequiredArgsConstructor
@@ -20,5 +22,19 @@ public class SupplyController {
     ) {
         return ResponseEntity.ok(service.saveSupply(request));
     }
+
+    @GetMapping("/date")
+    public ResponseEntity<String> checkDate(
+            @RequestParam long id
+    ) {
+        return ResponseEntity.ok(service.checkDate(id));
+    }
+    @GetMapping("/date/")
+    public ResponseEntity<String> checkDates(
+            @RequestParam List<Long> id
+    ) {
+        return ResponseEntity.ok(service.checkDate(id));
+    }
+
 
 }

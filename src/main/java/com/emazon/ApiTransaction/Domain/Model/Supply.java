@@ -10,11 +10,11 @@ public class Supply {
     private String date;
 
     public Supply(SupplyBuilder builder) {
-        this.id = builder.id;
-        this.idUser = builder.idUser;
-        this.idItem = builder.idItem;
-        this.quantity = builder.quantity;
-        this.date = builder.date;
+        this.id = builder.getId();
+        this.idUser = builder.getIdUser();
+        this.idItem = builder.getIdItem();
+        this.quantity = builder.getQuantity();
+        this.date = builder.getDate();
     }
 
     public static SupplyBuilder builder() {

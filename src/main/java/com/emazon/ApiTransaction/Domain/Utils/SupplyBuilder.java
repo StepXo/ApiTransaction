@@ -3,11 +3,11 @@ package com.emazon.ApiTransaction.Domain.Utils;
 import com.emazon.ApiTransaction.Domain.Model.Supply;
 
 public class SupplyBuilder {
-    public long id;
-    public long idUser;
-    public long idItem;
-    public int quantity;
-    public String date;
+    private long id;
+    private long idUser;
+    private long idItem;
+    private int quantity;
+    private String date;
 
     public SupplyBuilder setId(long id) {
         this.id = id;
@@ -38,5 +38,23 @@ public class SupplyBuilder {
         return new Supply(this);
     }
 
+    public long getId() {
+        return id;
+    }
 
+    public long getIdUser() {
+        return idUser;
+    }
+
+    public long getIdItem() {
+        return idItem;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public String getDate() {
+        return date;
+    }
 }

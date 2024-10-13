@@ -4,4 +4,6 @@ import com.emazon.ApiTransaction.Domain.Model.Supply;
 
 public interface SupplyRepositoryPort {
     Supply saveSupply(Supply supply);
+
+    Supply getItem(long id);
 }

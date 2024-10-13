@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -29,4 +30,11 @@ public class SupplyService {
         return handler.toResponse(supplyServicePort.saveSupply(supply));
     }
 
+    public String checkDate(long id) {
+        return supplyServicePort.checkDate(id);
+    }
+
+    public String checkDate(List<Long> id) {
+        return supplyServicePort.checkDate(id);
+    }
 }
