@@ -7,6 +7,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import static com.emazon.ApiTransaction.Infrastructure.Utils.InfraConstants.AUTHORIZATION;
+import static com.emazon.ApiTransaction.Infrastructure.Utils.InfraConstants.BEARER;
+
 @Configuration
 @AllArgsConstructor
 public class FeignConfiguration {
@@ -16,8 +19,8 @@ public class FeignConfiguration {
         return new RequestInterceptor() {
             @Override
             public void apply(RequestTemplate template) {
-                String token = "Bearer " + userExtractor.getTokenFromRequest();
-                template.header("Authorization", token);
+                String token = BEARER + userExtractor.getTokenFromRequest();
+                template.header(AUTHORIZATION, token);
             }
         };
     }

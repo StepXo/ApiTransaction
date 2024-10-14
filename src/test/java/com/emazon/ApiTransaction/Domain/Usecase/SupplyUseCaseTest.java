@@ -1,6 +1,6 @@
 package com.emazon.ApiTransaction.Domain.Usecase;
 
-import com.emazon.ApiTransaction.Domain.Exeption.InvalidQuantityExeption;
+import com.emazon.ApiTransaction.Domain.Exeption.InvalidQuantityException;
 import com.emazon.ApiTransaction.Domain.Model.Supply;
 import com.emazon.ApiTransaction.Domain.Spi.StockFeignPort;
 import com.emazon.ApiTransaction.Domain.Spi.SupplyRepositoryPort;
@@ -72,7 +72,7 @@ class SupplyUseCaseTest {
         supply.setQuantity(0); // Esta cantidad debería provocar una excepción
 
         // Act and Assert
-        assertThrows(InvalidQuantityExeption.class, () -> supplyUseCase.saveSupply(supply));
+        assertThrows(InvalidQuantityException.class, () -> supplyUseCase.saveSupply(supply));
 
         // Verifica que no se llame a la actualización de stock ni al guardado del supply
         verify(stockFeignPort, never()).updateStock(supply);

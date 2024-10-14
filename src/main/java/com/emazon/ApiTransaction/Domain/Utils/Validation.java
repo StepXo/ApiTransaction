@@ -1,9 +1,11 @@
 package com.emazon.ApiTransaction.Domain.Utils;
 
-import com.emazon.ApiTransaction.Domain.Exeption.InvalidItemIdExeption;
-import com.emazon.ApiTransaction.Domain.Exeption.InvalidQuantityExeption;
-import com.emazon.ApiTransaction.Domain.Exeption.TokenIlegalFormatExeption;
+import com.emazon.ApiTransaction.Domain.Exeption.InvalidItemIdException;
+import com.emazon.ApiTransaction.Domain.Exeption.InvalidQuantityException;
+import com.emazon.ApiTransaction.Domain.Exeption.TokenMalformationException;
 import com.emazon.ApiTransaction.Domain.Model.Supply;
+
+import static com.emazon.ApiTransaction.Domain.Utils.DomConstants.ZERO;
 
 public class Validation {
     public static void validate(Supply supply,String tokenId){
@@ -14,20 +16,20 @@ public class Validation {
     }
     private static void validateTokenId(String token) {
         if (token == null) {
-            throw new TokenIlegalFormatExeption();
+            throw new TokenMalformationException();
         }
 
 
     }
         private static void validateQuantity(long quantity) {
-        if (quantity <= 0) {
-            throw new InvalidQuantityExeption();
+        if (quantity <= ZERO) {
+            throw new InvalidQuantityException();
         }
     }
 
     private static void validateIdItem(Long idItem) {
-        if (idItem <= 0) {
-            throw new InvalidItemIdExeption();
+        if (idItem <= ZERO) {
+            throw new InvalidItemIdException();
         }
     }
 }

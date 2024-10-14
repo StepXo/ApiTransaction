@@ -1,6 +1,7 @@
 package com.emazon.ApiTransaction.Infrastructure.Adapters.SecurityConfig;
 
 import com.emazon.ApiTransaction.Infrastructure.Adapters.SecurityConfig.JwtSecurity.JwtAuthenticationFilter;
+import com.emazon.ApiTransaction.Infrastructure.Utils.InfraConstants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +27,7 @@ public class ConfigFilter {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/supply/**").hasAnyRole("WAREHOUSE_AUX", "ADMIN")
+                        .requestMatchers(InfraConstants.SUPPLY_AUTH).hasAnyRole(InfraConstants.ROLE_WAREHOUSE_AUX, InfraConstants.ROLE_ADMIN)
                         .anyRequest().authenticated())
 
                 .sessionManagement(session -> session
