@@ -5,6 +5,7 @@ import com.emazon.ApiTransaction.Domain.Model.Supply;
 import com.emazon.ApiTransaction.Domain.Spi.StockFeignPort;
 import com.emazon.ApiTransaction.Domain.Spi.SupplyRepositoryPort;
 import com.emazon.ApiTransaction.Domain.Spi.UserJwtPort;
+import com.emazon.ApiTransaction.Domain.Utils.DomConstants;
 import com.emazon.ApiTransaction.Domain.Utils.Validation;
 
 import java.time.LocalDate;
@@ -27,9 +28,13 @@ public class SupplyUseCase implements SupplyServicePort {
         String userIdString = userJwt.extractUserId();
         Validation.validate(supply,userIdString);
 
-        supply.setDate(LocalDate.now().toString());
-        supply.setIdUser(Long.parseLong(userJwt.extractUserId()));
+        if (supply.getDate() ==null) {
+            supply.setDate(LocalDate.now().toString());
+        } else {
+            supply.setDate(supply.getDate());
+        }
 
+        supply.setIdUser(Long.parseLong(userJwt.extractUserId()));
         stockFeignPort.updateStock(supply);
 
         return supplyRepositoryPort.saveSupply(supply);
@@ -39,18 +44,18 @@ public class SupplyUseCase implements SupplyServicePort {
     public String checkDate(long id) {
         Supply item = supplyRepositoryPort.getItem(id);
         if (item == null) {
-            return "Item has never Supplied";
+            return DomConstants.NOT_SUPPLYED;
         }
-        return "Last time item" + item.getIdItem() + " has been Supplied on " + item.getDate();
+        return DomConstants.RESPONSE_1 + item.getIdItem() + DomConstants.RESPONSE_2 + item.getDate();
     }
 
     @Override
     public String checkDate(List<Long> id) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder response = new StringBuilder();
         for (long itemId : id) {
-            sb.append(checkDate(itemId)).append("\n");
+            response.append(checkDate(itemId)).append(DomConstants.NEW_LINE);
         }
-        return sb.toString();
+        return response.toString();
 
     }
 

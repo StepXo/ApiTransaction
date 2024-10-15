@@ -8,6 +8,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import static com.emazon.ApiTransaction.Infrastructure.Utils.InfraConstants.AUTHORIZATION;
+import static com.emazon.ApiTransaction.Infrastructure.Utils.InfraConstants.BEARER;
+
 @Component
 @AllArgsConstructor
 public class UserExtractor implements UserJwtPort {
@@ -22,8 +25,8 @@ public class UserExtractor implements UserJwtPort {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (attributes != null) {
             HttpServletRequest request = attributes.getRequest();
-            String authHeader = request.getHeader("Authorization");
-            if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            String authHeader = request.getHeader(AUTHORIZATION);
+            if (authHeader != null && authHeader.startsWith(BEARER)) {
                 return authHeader.substring(7);
             }
         }

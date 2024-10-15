@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+import static com.emazon.ApiTransaction.Infrastructure.Utils.InfraConstants.ROLE;
+
 @AllArgsConstructor
 @Getter
 @Setter
@@ -19,7 +21,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(() -> "ROLE_" + role);
+        return List.of(() -> ROLE + role);
     }
 
     @Override

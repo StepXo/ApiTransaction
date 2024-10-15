@@ -18,6 +18,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+import static com.emazon.ApiTransaction.Infrastructure.Utils.InfraConstants.BEARER;
+import static com.emazon.ApiTransaction.Infrastructure.Utils.InfraConstants.SEVEN;
+
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -64,9 +67,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private String getTokenFromRequest(HttpServletRequest request) {
         final String authHeader=request.getHeader(HttpHeaders.AUTHORIZATION);
 
-        if(StringUtils.hasText(authHeader) && authHeader.startsWith("Bearer "))
+        if(StringUtils.hasText(authHeader) && authHeader.startsWith(BEARER))
         {
-            return authHeader.substring(7);
+            return authHeader.substring(SEVEN);
         }
         return null;
     }
