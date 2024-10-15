@@ -28,9 +28,13 @@ public class SupplyUseCase implements SupplyServicePort {
         String userIdString = userJwt.extractUserId();
         Validation.validate(supply,userIdString);
 
-        supply.setDate(LocalDate.now().toString());
-        supply.setIdUser(Long.parseLong(userJwt.extractUserId()));
+        if (supply.getDate() ==null) {
+            supply.setDate(LocalDate.now().toString());
+        } else {
+            supply.setDate(supply.getDate());
+        }
 
+        supply.setIdUser(Long.parseLong(userJwt.extractUserId()));
         stockFeignPort.updateStock(supply);
 
         return supplyRepositoryPort.saveSupply(supply);
@@ -47,11 +51,11 @@ public class SupplyUseCase implements SupplyServicePort {
 
     @Override
     public String checkDate(List<Long> id) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder response = new StringBuilder();
         for (long itemId : id) {
-            sb.append(checkDate(itemId)).append(DomConstants.NEW_LINE);
+            response.append(checkDate(itemId)).append(DomConstants.NEW_LINE);
         }
-        return sb.toString();
+        return response.toString();
 
     }
 

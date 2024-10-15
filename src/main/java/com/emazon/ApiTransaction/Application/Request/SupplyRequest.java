@@ -11,4 +11,5 @@ public class SupplyRequest {
     private long id;
     private long itemId;
     private int quantity;
+    private String date;
 }

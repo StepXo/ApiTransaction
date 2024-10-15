@@ -24,6 +24,7 @@ public class SupplyService {
                 setId(request.getId())
                 .setIdItem(request.getItemId())
                 .setQuantity(request.getQuantity())
+                .setDate(request.getDate())
                 .build();
 
         return handler.toResponse(supplyServicePort.saveSupply(supply));

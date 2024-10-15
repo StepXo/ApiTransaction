@@ -2,8 +2,7 @@ package com.emazon.ApiTransaction.Infrastructure.Utils;
 
 public class InfraConstants {
     public static final int SEVEN = 7;
-    public static final String TABLE_SUPPLY = "Supply";
-    public static final String ID = "id";
+    public static final String TABLE_SUPPLY = "SUPPLY";
     public static final String MESSAGE = "Message";
 
     public static final String SPRING =  "spring";
@@ -16,7 +15,7 @@ public class InfraConstants {
     public static final String SUPPLY = "/supply";
     public static final String TRANSACTION = "/transaction";
     public static final String CHECK_1DATE = "/date";
-    public static final String CHECK_DATES = "/date/";
+    public static final String CHECK_DATES = "/dates";
 
     public static final String ROLE = "ROLE_";
     public static final String BEARER = "Bearer ";
