@@ -1,10 +1,7 @@
 package com.emazon.ApiTransaction.Infrastructure.ExeptionHandler;
 
 
-import com.emazon.ApiTransaction.Domain.Exeption.InvalidItemIdException;
-import com.emazon.ApiTransaction.Domain.Exeption.InvalidQuantityException;
-import com.emazon.ApiTransaction.Domain.Exeption.TokenMalformationException;
-import com.emazon.ApiTransaction.Domain.Exeption.UserNotFound;
+import com.emazon.ApiTransaction.Domain.Exeption.*;
 import com.emazon.ApiTransaction.Infrastructure.Utils.InfraConstants;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,6 +45,10 @@ public class ControllerAdvisor {
                 .body(Collections.singletonMap(InfraConstants.MESSAGE, ExceptionResponse.USER_NOT_FOUND.getMessage()));
     }
 
-
-
+    @ExceptionHandler(ItemNotFoundException.class)
+    public ResponseEntity<Map<String, String>> itemNotFoundException(
+            ItemNotFoundException itemNotFoundException) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Collections.singletonMap(InfraConstants.MESSAGE, itemNotFoundException.getMessage()));
+    }
 }

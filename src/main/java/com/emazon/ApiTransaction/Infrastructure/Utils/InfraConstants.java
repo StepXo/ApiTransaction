@@ -4,10 +4,14 @@ public class InfraConstants {
     public static final int SEVEN = 7;
     public static final String TABLE_SUPPLY = "SUPPLY";
     public static final String MESSAGE = "Message";
+    public static final String METHOD = "POST";
+    public static final String CONTENT = "Content-Type";
 
     public static final String SPRING =  "spring";
     public static final String API_STOCK = "Api-Stock";
     public static final String API_USER = "Api-User";
+    public static final String URL = "FrontUrl";
+
 
     public static final String INCREASE = "/increase";
     public static final String GET_USER = "/{id}";
@@ -16,6 +20,7 @@ public class InfraConstants {
     public static final String TRANSACTION = "/transaction";
     public static final String CHECK_1DATE = "/date";
     public static final String CHECK_DATES = "/dates";
+    public static final String ASTERISKS = "/**";
 
     public static final String ROLE = "ROLE_";
     public static final String BEARER = "Bearer ";
@@ -23,4 +28,5 @@ public class InfraConstants {
     public static final String ROLE_ADMIN = "ADMIN";
     public static final String ROLE_WAREHOUSE_AUX = "WAREHOUSE_AUX";
 
+    public static final String ITEM_NOT_FOUND = "No item was found with that ID";
 }
